@@ -5,12 +5,14 @@ class Theme extends ChangeNotifier {
   final ColorScheme colorScheme;
   final ButtonStyle buttonStyle;
   final ButtonStyle? ghostButtonStyle;
+  final SliderStyle sliderStyle;
   final TextStyle textStyle;
 
   Theme({
     required this.colorScheme,
     required this.buttonStyle,
     this.ghostButtonStyle,
+    required this.sliderStyle,
     required this.textStyle
   });
 
@@ -27,6 +29,11 @@ class Theme extends ChangeNotifier {
         color: Color.fromARGB(0, 0, 0, 0),
         colorOnHover: colorScheme.buttonColor,
         colorOnPress: colorScheme.buttonPressedColor,
+      ),
+      sliderStyle: SliderStyle(
+        colorLeftOfHandle: colorScheme.sliderFilledColor,
+        colorRightOfHandle: colorScheme.sliderUnfilledColor,
+        borderColor: colorScheme.sliderBorderColor
       ),
       textStyle: TextStyle(
         color: colorScheme.foregroundPrimaryColor

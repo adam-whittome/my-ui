@@ -10,6 +10,10 @@ class ColorScheme {
   final Color buttonHoveredColor;
   final Color buttonPressedColor;
 
+  final Color sliderFilledColor;
+  final Color sliderUnfilledColor;
+  final Color sliderBorderColor;
+
   final Color separatorColor;
 
   final Color foregroundPrimaryColor;
@@ -22,6 +26,9 @@ class ColorScheme {
     required this.buttonColor,
     required this.buttonHoveredColor,
     required this.buttonPressedColor,
+    required this.sliderFilledColor,
+    required this.sliderUnfilledColor,
+    required this.sliderBorderColor,
     required this.separatorColor,
     required this.foregroundPrimaryColor,
   });
@@ -36,8 +43,12 @@ class ColorScheme {
     buttonHoveredColor: Color.fromARGB(255, 202, 199, 199),
     buttonPressedColor: Color.fromARGB(255, 165, 164, 163),
 
+    sliderFilledColor: Color.fromARGB(255, 186, 186, 186),
+    sliderUnfilledColor: Color.fromARGB(255, 252, 255, 252),
+    sliderBorderColor: Color.fromARGB(255, 186, 186, 186),
+
     separatorColor: Color.fromARGB(255, 180, 180, 180),
 
-    foregroundPrimaryColor: Color.fromARGB(255, 0, 0, 0),
+    foregroundPrimaryColor: Color.fromARGB(255, 0, 0, 0)
   );
 }

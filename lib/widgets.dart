@@ -7,6 +7,9 @@ export 'widgets/clickable.dart';
 
 export 'widgets/resizable_panels.dart';
 
+export 'widgets/slider.dart';
+export 'widgets/slider_style.dart';
+
 export 'widgets/tabs.dart';
 
 export 'widgets/color_scheme.dart';

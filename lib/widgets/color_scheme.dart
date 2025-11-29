@@ -43,9 +43,9 @@ class ColorScheme {
     buttonHoveredColor: Color.fromARGB(255, 202, 199, 199),
     buttonPressedColor: Color.fromARGB(255, 165, 164, 163),
 
-    sliderFilledColor: Color.fromARGB(255, 186, 186, 186),
-    sliderUnfilledColor: Color.fromARGB(255, 252, 255, 252),
-    sliderBorderColor: Color.fromARGB(255, 186, 186, 186),
+    sliderFilledColor: Color.fromARGB(255, 0, 0, 0),
+    sliderUnfilledColor: Color.fromARGB(255, 211, 211, 211),
+    sliderBorderColor: Color.fromARGB(255, 0, 0, 0),
 
     separatorColor: Color.fromARGB(255, 180, 180, 180),
 

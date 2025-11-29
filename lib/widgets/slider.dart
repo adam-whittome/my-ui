@@ -136,10 +136,10 @@ class _SliderState extends State<Slider> {
                   child: DecoratedBox(
                     decoration: BoxDecoration(
                       color: style.colorRightOfHandle,
-                      border: BoxBorder.all(
+                      border: style.borderWidth != 0 ? BoxBorder.all(
                         color: style.borderColor,
                         width: style.borderWidth
-                      ),
+                      ) : null,
                       borderRadius: BorderRadius.circular(widget.height / 2)
                     )
                   )
@@ -153,13 +153,14 @@ class _SliderState extends State<Slider> {
                       alignment: AlignmentGeometry.centerLeft,
                       child: SizedBox(
                         width: constraints.maxWidth * ratio,
+                        height: widget.height,
                         child: DecoratedBox(
                           decoration: BoxDecoration(
                             color: style.colorLeftOfHandle,
-                            border: BoxBorder.all(
+                            border: style.borderWidth != 0 ? BoxBorder.all(
                               color: style.borderColor,
                               width: style.borderWidth
-                            ),
+                            ) : null,
                           )
                         )
                       )

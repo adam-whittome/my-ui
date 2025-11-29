@@ -10,6 +10,6 @@ class SliderStyle {
     required this.colorLeftOfHandle,
     required this.colorRightOfHandle,
     required this.borderColor,
-    this.borderWidth = 2
+    this.borderWidth = 0
   });
 }

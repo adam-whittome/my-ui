@@ -8,4 +8,5 @@ A UI package for Flutter, loosely inspired by Blender's UI widgets.
 + `Button` - Button with default and ghost themes.
 + `Clickable` - Widget that handles cursor icon changes and provides click-related methods.
 + `ResizablePanels` - Like a `Row` or `Column`, but each element is resizable, initialized according to a given flex.
++ `Slider` - Slider for picking a value on a continuous range. Also comes with a default `Handle`.
 + `Tabs` - Shows different widgets based on selected tab using tab headers which can also contain custom widgets.

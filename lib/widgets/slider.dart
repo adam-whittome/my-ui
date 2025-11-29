@@ -17,6 +17,8 @@ class Handle extends StatelessWidget {
       style = this.style!;
     }
     return SizedBox(
+      width: size,
+      height: size,
       child: DecoratedBox(
         decoration: BoxDecoration(
           color: style.borderColor,
@@ -25,6 +27,23 @@ class Handle extends StatelessWidget {
       )
     );
   }
+}
+
+class HandleLayoutDelegate extends SingleChildLayoutDelegate {
+  final double ratio;
+
+  const HandleLayoutDelegate({required this.ratio});
+
+  @override
+  Offset getPositionForChild(Size size, Size childSize) {
+    return Offset(
+      size.width * ratio - childSize.width / 2,
+      size.height / 2 - childSize.width / 2
+    );
+  }
+
+  @override
+  bool shouldRelayout(covariant SingleChildLayoutDelegate oldDelegate) => true;
 }
 
 enum SlidingState {
@@ -65,7 +84,9 @@ class _SliderState extends State<Slider> {
       style = widget.style!;
     }
     return LayoutBuilder(
-      builder:(context, constraints) => Stack(
+      builder: (context, constraints) => Stack(
+        alignment: AlignmentGeometry.center,
+        clipBehavior: Clip.none,
         children: [
           SizedBox(
             height: widget.height,
@@ -102,6 +123,10 @@ class _SliderState extends State<Slider> {
                 )
               )
             )
+          ),
+          CustomSingleChildLayout(
+            delegate: HandleLayoutDelegate(ratio: ratio),
+            child: widget.handle
           )
         ],
       )

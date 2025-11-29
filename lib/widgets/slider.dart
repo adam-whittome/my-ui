@@ -106,68 +106,75 @@ class _SliderState extends State<Slider> {
       style = widget.style!;
     }
     return LayoutBuilder(
-      builder: (context, constraints) => GestureDetector(
-        onPanStart: (details) => transitionState(SlidingState.draggedInRegion),
-        onTapDown:(details) => onPanUpdate(DragUpdateDetails(globalPosition: details.globalPosition), constraints),
-        onPanUpdate: (details) => onPanUpdate(details, constraints),
-        onPanEnd: (details) {
-          tryTransitionState(SlidingState.draggedInRegion, SlidingState.hovered);
-          tryTransitionState(SlidingState.draggedOutOfRegion, SlidingState.none);
-        },
-        child: MouseRegion(
-          onEnter: (event) {
-            tryTransitionState(SlidingState.none, SlidingState.hovered);
-            tryTransitionState(SlidingState.draggedOutOfRegion, SlidingState.draggedInRegion);
+      builder: (context, constraints) => SizedBox(
+        height: widget.height + 2 * style.borderWidth,
+        width: constraints.maxWidth,
+        child: GestureDetector(
+          onPanStart: (details) => transitionState(SlidingState.draggedInRegion),
+          onTapDown:(details) => onPanUpdate(DragUpdateDetails(globalPosition: details.globalPosition), constraints),
+          onPanUpdate: (details) => onPanUpdate(details, constraints),
+          onPanEnd: (details) {
+            tryTransitionState(SlidingState.draggedInRegion, SlidingState.hovered);
+            tryTransitionState(SlidingState.draggedOutOfRegion, SlidingState.none);
           },
-          onExit: (event) {
-            tryTransitionState(SlidingState.hovered, SlidingState.none);
-            tryTransitionState(SlidingState.draggedInRegion, SlidingState.draggedOutOfRegion);
-          },
-          child: Stack(
-            alignment: AlignmentGeometry.center,
-            clipBehavior: Clip.none,
-            children: [
-              SizedBox(
-                height: widget.height,
-                width: constraints.maxWidth,
-                child: DecoratedBox(
-                  decoration: BoxDecoration(
-                    color: style.colorRightOfHandle,
-                    border: BoxBorder.all(
-                      color: style.borderColor,
-                      width: style.borderWidth
-                    ),
-                    borderRadius: BorderRadius.circular(widget.height / 2)
-                  )
-                )
-              ),
-              ClipRRect(
-                borderRadius: BorderRadiusGeometry.circular(widget.height / 2),
-                child: SizedBox(
-                  width: constraints.maxWidth,
+          child: MouseRegion(
+            onEnter: (event) {
+              tryTransitionState(SlidingState.none, SlidingState.hovered);
+              tryTransitionState(SlidingState.draggedOutOfRegion, SlidingState.draggedInRegion);
+            },
+            onExit: (event) {
+              tryTransitionState(SlidingState.hovered, SlidingState.none);
+              tryTransitionState(SlidingState.draggedInRegion, SlidingState.draggedOutOfRegion);
+            },
+            child: Stack(
+              alignment: AlignmentGeometry.center,
+              clipBehavior: Clip.none,
+              children: [
+                SizedBox(
                   height: widget.height,
-                  child: Align(
-                    alignment: AlignmentGeometry.centerLeft,
-                    child: SizedBox(
-                      width: constraints.maxWidth * ratio,
-                      child: DecoratedBox(
-                        decoration: BoxDecoration(
-                          color: style.colorLeftOfHandle,
-                          border: BoxBorder.all(
-                            color: style.borderColor,
-                            width: style.borderWidth
-                          ),
+                  width: constraints.maxWidth,
+                  child: DecoratedBox(
+                    decoration: BoxDecoration(
+                      color: style.colorRightOfHandle,
+                      border: BoxBorder.all(
+                        color: style.borderColor,
+                        width: style.borderWidth
+                      ),
+                      borderRadius: BorderRadius.circular(widget.height / 2)
+                    )
+                  )
+                ),
+                ClipRRect(
+                  borderRadius: BorderRadiusGeometry.circular(widget.height / 2),
+                  child: SizedBox(
+                    width: constraints.maxWidth,
+                    height: widget.height,
+                    child: Align(
+                      alignment: AlignmentGeometry.centerLeft,
+                      child: SizedBox(
+                        width: constraints.maxWidth * ratio,
+                        child: DecoratedBox(
+                          decoration: BoxDecoration(
+                            color: style.colorLeftOfHandle,
+                            border: BoxBorder.all(
+                              color: style.borderColor,
+                              width: style.borderWidth
+                            ),
+                          )
                         )
                       )
                     )
                   )
+                ),
+                OverflowBox(
+                  maxHeight: constraints.maxHeight,
+                  child: CustomSingleChildLayout(
+                    delegate: HandleLayoutDelegate(ratio: ratio),
+                    child: widget.handle
+                  ) 
                 )
-              ),
-              CustomSingleChildLayout(
-                delegate: HandleLayoutDelegate(ratio: ratio),
-                child: widget.handle
-              )
-            ],
+              ],
+            )
           )
         )
       )

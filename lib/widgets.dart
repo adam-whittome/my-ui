@@ -12,6 +12,8 @@ export 'widgets/slider_style.dart';
 
 export 'widgets/tabs.dart';
 
+export 'widgets/tickbox.dart';
+
 export 'widgets/color_scheme.dart';
 export 'widgets/theme.dart';
 export 'widgets/theme_provider.dart';

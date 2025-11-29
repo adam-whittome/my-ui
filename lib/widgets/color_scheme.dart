@@ -16,6 +16,10 @@ class ColorScheme {
 
   final Color separatorColor;
 
+  final Color tickboxSetColor;
+  final Color tickboxUnsetColor;
+  final Color tickboxBorderColor;
+
   final Color foregroundPrimaryColor;
 
   const ColorScheme({
@@ -30,6 +34,9 @@ class ColorScheme {
     required this.sliderUnfilledColor,
     required this.sliderBorderColor,
     required this.separatorColor,
+    required this.tickboxSetColor,
+    required this.tickboxUnsetColor,
+    required this.tickboxBorderColor,
     required this.foregroundPrimaryColor,
   });
 
@@ -48,6 +55,10 @@ class ColorScheme {
     sliderBorderColor: Color.fromARGB(255, 0, 0, 0),
 
     separatorColor: Color.fromARGB(255, 180, 180, 180),
+
+    tickboxSetColor: Color.fromARGB(255, 0, 0, 0),
+    tickboxUnsetColor: Color.fromARGB(255, 252, 255, 252),
+    tickboxBorderColor: Color.fromARGB(255, 0, 0, 0),
 
     foregroundPrimaryColor: Color.fromARGB(255, 0, 0, 0)
   );

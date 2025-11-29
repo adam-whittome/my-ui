@@ -7,13 +7,15 @@ class Theme extends ChangeNotifier {
   final ButtonStyle? ghostButtonStyle;
   final SliderStyle sliderStyle;
   final TextStyle textStyle;
+  final TickboxStyle tickboxStyle;
 
   Theme({
     required this.colorScheme,
     required this.buttonStyle,
     this.ghostButtonStyle,
     required this.sliderStyle,
-    required this.textStyle
+    required this.textStyle,
+    required this.tickboxStyle
   });
 
   factory Theme.light() {
@@ -37,6 +39,11 @@ class Theme extends ChangeNotifier {
       ),
       textStyle: TextStyle(
         color: colorScheme.foregroundPrimaryColor
+      ),
+      tickboxStyle: TickboxStyle(
+        setColor: colorScheme.tickboxSetColor,
+        unsetColor: colorScheme.tickboxUnsetColor,
+        borderColor: colorScheme.tickboxBorderColor
       )
     );
   }

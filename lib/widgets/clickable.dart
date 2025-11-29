@@ -6,11 +6,21 @@ class Clickable extends StatefulWidget {
   final void Function(TapUpDetails)? onClickUp;
   final void Function(PointerEnterEvent)? onEnter;
   final void Function(PointerExitEvent)? onExit;
+  final bool changeCursor;
 
   final Widget Function(BuildContext, Widget?, ClickableState)? builder;
   final Widget? child;
 
-  const Clickable({super.key, this.onClickDown, this.onClickUp, this.onEnter, this.onExit, this.builder, this.child});
+  const Clickable({
+    super.key,
+    this.onClickDown,
+    this.onClickUp,
+    this.onEnter,
+    this.onExit,
+    this.changeCursor = true,
+    this.builder,
+    this.child
+  });
 
   @override
   State<Clickable> createState() => _ClickableState();
@@ -61,10 +71,10 @@ class _ClickableState extends State<Clickable> {
             state = ClickableState.none;
           });
         },
-        cursor: switch (state) {
+        cursor: widget.changeCursor ? switch (state) {
           ClickableState.none => MouseCursor.defer,
           ClickableState.hovered || ClickableState.clicked => SystemMouseCursors.click,
-        },
+        } : MouseCursor.defer,
         child: widget.builder != null ? widget.builder!(context, widget.child, state) : widget.child,
       ),
     );

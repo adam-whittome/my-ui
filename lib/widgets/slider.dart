@@ -66,25 +66,39 @@ class _SliderState extends State<Slider> {
     }
     return LayoutBuilder(
       builder:(context, constraints) => Stack(
-        alignment: AlignmentGeometry.center,
         children: [
-          Positioned(
-            left: ratio * constraints.maxWidth,
-            child: widget.handle
+          SizedBox(
+            height: widget.height,
+            width: constraints.maxWidth,
+            child: DecoratedBox(
+              decoration: BoxDecoration(
+                color: style.colorRightOfHandle,
+                border: BoxBorder.all(
+                  color: style.borderColor,
+                  width: style.borderWidth
+                ),
+                borderRadius: BorderRadius.circular(widget.height / 2)
+              )
+            )
           ),
-          Positioned.fill(
-            child: Align(
-              child: ConstrainedBox(
-                constraints: BoxConstraints(maxHeight: widget.height),
-                child: DecoratedBox(
-                  decoration: BoxDecoration(
-                    color: style.colorRightOfHandle,
-                    border: BoxBorder.all(
-                      color: style.borderColor,
-                      width: style.borderWidth
-                    ),
-                    borderRadius: BorderRadius.all(Radius.circular(widget.height / 2))
-                  ),
+          ClipRRect(
+            borderRadius: BorderRadiusGeometry.circular(widget.height / 2),
+            child: SizedBox(
+              width: constraints.maxWidth,
+              height: widget.height,
+              child: Align(
+                alignment: AlignmentGeometry.centerLeft,
+                child: SizedBox(
+                  width: constraints.maxWidth * ratio,
+                  child: DecoratedBox(
+                    decoration: BoxDecoration(
+                      color: style.colorLeftOfHandle,
+                      border: BoxBorder.all(
+                        color: style.borderColor,
+                        width: style.borderWidth
+                      ),
+                    )
+                  )
                 )
               )
             )

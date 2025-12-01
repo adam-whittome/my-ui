@@ -13,6 +13,12 @@ class Popover extends StatefulWidget {
 class _PopoverState extends State<Popover> {
   bool shown = false;
 
+  void setShown(bool shown) {
+    setState(() {
+      this.shown = shown;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(

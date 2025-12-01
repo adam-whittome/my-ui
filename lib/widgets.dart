@@ -5,6 +5,8 @@ export 'widgets/button_style.dart';
 
 export 'widgets/clickable.dart';
 
+export 'widgets/popover.dart';
+
 export 'widgets/resizable_panels.dart';
 
 export 'widgets/slider.dart';
